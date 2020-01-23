@@ -14,20 +14,25 @@ class Enemy:
     def draw(self):
         fillCircle(self.x, self.y, 20, "red")
 
-def createEnemy(world):
+def createEnemy():
+    world = getWorld()
     world.enemies.append(Enemy())
+    world.lastSpawnedEnemy = getElapsedTime()
 
 def startWorld(world):
     world.playerX = 500
     world.enemies = []
-    world.enemySpeed = 2
+    world.enemySpeed = 1
+    world.enemySpawnRate = 2000
+    world.lastSpawnedEnemy = 0
 
 def updateWorld(world):
     for enemy in world.enemies:
         enemy.update()
-
-    if random.randint(1, 50) == 1:
-        createEnemy(world)
+    if getElapsedTime() - world.lastSpawnedEnemy >= world.enemySpawnRate:
+        createEnemy()
+        world.enemySpeed += 0.05
+        world.enemySpawnRate *= 0.95
 
     if isKeyPressed('d'):
         world.playerX += 5
@@ -37,7 +42,6 @@ def updateWorld(world):
 def drawWorld(world):
     for enemy in world.enemies:
         enemy.draw()
-
     fillCircle(world.playerX, 720, 30, "dimgrey")
 
 runGraphics(startWorld, updateWorld, drawWorld)
