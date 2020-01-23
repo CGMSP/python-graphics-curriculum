@@ -9,11 +9,12 @@ class Enemy:
         self.y = 0
 
     def update(self, world):
+        # Move enemy down
         self.y += world.enemySpeed
-
+        # Check if enemy hit the bottom of the screen
         if self.y >= 800:
             sys.exit()
-
+        # Figure out if enemy gets shot
         for bullet in world.bullets:
             # Pythagorean theorem to calculate collisions
             distanceToBullet = math.sqrt(
@@ -47,37 +48,44 @@ def shootBullet(world):
     world.bullets.append(Bullet())
 
 def startWorld(world):
+    # Declare variables
     world.playerX = 500
     world.enemies = []
     world.bullets = []
     world.enemySpeed = 1
     world.enemySpawnRate = 2000
     world.lastSpawnedEnemy = 0
+    # Create listener for space key
     onKeyPress(shootBullet, 'space')
 
 def updateWorld(world):
+    # Update enemies
     for enemy in world.enemies:
         if enemy.update(world):
             world.enemies.remove(enemy)
-
+    # Update bullets
     for bullet in world.bullets:
         bullet.update()
+    # Spawn new enemies
     if getElapsedTime() - world.lastSpawnedEnemy >= world.enemySpawnRate:
         createEnemy(world)
         world.enemySpeed += 0.05
         world.enemySpawnRate *= 0.95
-
+    # Move player
     if isKeyPressed('d'):
         world.playerX += 8
     if isKeyPressed('a'):
         world.playerX -= 8
 
 def drawWorld(world):
+    # Draw bullets
     for bullet in world.bullets:
         bullet.draw()
+    # Draw enemies
     for enemy in world.enemies:
         enemy.draw()
     # Draw player
     fillCircle(world.playerX, 720, 45, "dimgrey")
 
+# Start the game
 runGraphics(startWorld, updateWorld, drawWorld)
