@@ -12,7 +12,7 @@ class Enemy:
         # Move enemy down
         self.y += world.enemySpeed
         # Check if enemy hit the bottom of the screen
-        if self.y >= 800:
+        if self.y >= 670:
             sys.exit()
         # Figure out if enemy gets shot
         for bullet in world.bullets:
@@ -32,7 +32,7 @@ class Enemy:
 class Bullet:
     def __init__(self):
         self.x = getWorld().playerX
-        self.y = 720
+        self.y = 750
 
     def update(self):
         self.y -= 8
@@ -78,6 +78,7 @@ def updateWorld(world):
         world.playerX -= 8
 
 def drawWorld(world):
+    drawLine(0, 700, 1000, 700, thickness=5)
     # Draw bullets
     for bullet in world.bullets:
         bullet.draw()
@@ -85,7 +86,7 @@ def drawWorld(world):
     for enemy in world.enemies:
         enemy.draw()
     # Draw player
-    fillCircle(world.playerX, 720, 45, "dimgrey")
+    fillCircle(world.playerX, 750, 40, "dimgrey")
 
 # Start the game
 runGraphics(startWorld, updateWorld, drawWorld)
