@@ -9,22 +9,25 @@ class Enemy:
         self.y = 0
 
     def update(self):
-        self.y += 2
-        if self.y >= 800:
-            del self
+        self.y += getWorld().enemySpeed
 
     def draw(self):
         fillCircle(self.x, self.y, 20, "red")
 
+def createEnemy(world):
+    world.enemies.append(Enemy())
+
 def startWorld(world):
     world.playerX = 500
     world.enemies = []
-    for i in range(5):
-        world.enemies.append(Enemy())
+    world.enemySpeed = 2
 
 def updateWorld(world):
     for enemy in world.enemies:
         enemy.update()
+
+    if random.randint(1, 50) == 1:
+        createEnemy(world)
 
     if isKeyPressed('d'):
         world.playerX += 5
