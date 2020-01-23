@@ -1,5 +1,5 @@
 from graphics import *
-import random
+import random, math
 
 makeGraphicsWindow(1000, 800)
 
@@ -8,11 +8,21 @@ class Enemy:
         self.x = random.randint(0, 1000)
         self.y = 0
 
-    def update(self):
-        self.y += getWorld().enemySpeed
+    def update(self, world):
+        self.y += world.enemySpeed
+        for bullet in world.bullets:
+            # Pythagorean theorem to calculate collisions
+            distanceToBullet = math.sqrt(
+                ((self.x - bullet.x) ** 2) +
+                ((self.y - bullet.y) ** 2)
+            )
+            if distanceToBullet <= 20:
+                return True
+        return False
 
     def draw(self):
         fillCircle(self.x, self.y, 20, "red")
+
 
 class Bullet:
     def __init__(self):
@@ -43,7 +53,9 @@ def startWorld(world):
 
 def updateWorld(world):
     for enemy in world.enemies:
-        enemy.update()
+        if enemy.update(world):
+            world.enemies.remove(enemy)
+
     for bullet in world.bullets:
         bullet.update()
     if getElapsedTime() - world.lastSpawnedEnemy >= world.enemySpawnRate:
@@ -52,9 +64,9 @@ def updateWorld(world):
         world.enemySpawnRate *= 0.95
 
     if isKeyPressed('d'):
-        world.playerX += 5
+        world.playerX += 8
     if isKeyPressed('a'):
-        world.playerX -= 5
+        world.playerX -= 8
 
 def drawWorld(world):
     for bullet in world.bullets:
