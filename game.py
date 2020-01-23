@@ -74,9 +74,9 @@ def updateWorld(world):
         world.enemySpeed += 0.05
         world.enemySpawnRate *= 0.95
     # Move player
-    if isKeyPressed('d'):
+    if isKeyPressed('d') and world.playerX <= 960:
         world.playerX += 8
-    if isKeyPressed('a'):
+    if isKeyPressed('a') and world.playerX >= 40:
         world.playerX -= 8
 
 def drawWorld(world):
