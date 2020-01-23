@@ -2,6 +2,7 @@ from graphics import *
 import random, math, sys
 
 makeGraphicsWindow(1000, 800)
+setWindowTitle('Demo Game')
 
 class Enemy:
     def __init__(self):
