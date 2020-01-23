@@ -29,7 +29,8 @@ class Enemy:
         return False
 
     def draw(self):
-        fillCircle(self.x, self.y, 30, "crimson")
+        # fillCircle(self.x, self.y, 30, "crimson")
+        drawImage(getWorld().enemyImage, self.x, self.y)
 
 class Bullet:
     def __init__(self):
@@ -40,7 +41,8 @@ class Bullet:
         self.y -= 8
 
     def draw(self):
-        fillCircle(self.x, self.y, 10, "black")
+        # fillCircle(self.x, self.y, 10, "black")
+        drawImage(getWorld().bulletImage, self.x, self.y)
 
 def createEnemy(world):
     world.enemies.append(Enemy())
@@ -50,6 +52,8 @@ def shootBullet(world):
     world.bullets.append(Bullet())
 
 def startWorld(world):
+    # Set background
+    setBackground((69, 69, 69))
     # Declare variables
     world.playerX = 500
     world.enemies = []
@@ -57,6 +61,10 @@ def startWorld(world):
     world.enemySpeed = 1
     world.enemySpawnRate = 2000
     world.lastSpawnedEnemy = 0
+    # Load images
+    world.playerImage = loadImage('assets/player.png', scale=0.2)
+    world.enemyImage = loadImage('assets/enemy.png', scale=0.1)
+    world.bulletImage = loadImage('assets/bullet.png', scale=0.1)
     # Create listener for space key
     onKeyPress(shootBullet, 'space')
 
@@ -88,7 +96,8 @@ def drawWorld(world):
     for enemy in world.enemies:
         enemy.draw()
     # Draw player
-    fillCircle(world.playerX, 750, 40, "dimgrey")
+    # fillCircle(world.playerX, 750, 40, "black")
+    drawImage(world.playerImage, world.playerX, 750)
 
 # Start the game
 runGraphics(startWorld, updateWorld, drawWorld)
