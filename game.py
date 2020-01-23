@@ -14,8 +14,7 @@ class Enemy:
     def draw(self):
         fillCircle(self.x, self.y, 20, "red")
 
-def createEnemy():
-    world = getWorld()
+def createEnemy(world):
     world.enemies.append(Enemy())
     world.lastSpawnedEnemy = getElapsedTime()
 
@@ -30,7 +29,7 @@ def updateWorld(world):
     for enemy in world.enemies:
         enemy.update()
     if getElapsedTime() - world.lastSpawnedEnemy >= world.enemySpawnRate:
-        createEnemy()
+        createEnemy(world)
         world.enemySpeed += 0.05
         world.enemySpawnRate *= 0.95
 
