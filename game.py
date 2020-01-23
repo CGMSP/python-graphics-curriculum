@@ -27,7 +27,7 @@ class Enemy:
         return False
 
     def draw(self):
-        fillCircle(self.x, self.y, 30, "red")
+        fillCircle(self.x, self.y, 30, "crimson")
 
 class Bullet:
     def __init__(self):
@@ -38,7 +38,7 @@ class Bullet:
         self.y -= 8
 
     def draw(self):
-        fillCircle(self.x, self.y, 10, "grey")
+        fillCircle(self.x, self.y, 10, "black")
 
 def createEnemy(world):
     world.enemies.append(Enemy())
