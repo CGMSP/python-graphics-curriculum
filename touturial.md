@@ -24,7 +24,7 @@ Here we create a class called "Enemy" where we first define the function "\_\_in
 
 ```
 class Enemy:
-    def \_\_init\_\_(self):
+    def __init__(self):
         self.x = random.randint(0, 1000)
         self.y = 0
 
@@ -75,7 +75,7 @@ We now create a class called 'bullet' and define a function initializing the bul
 
 ```
 class Bullet:
-    def \_\_init\_\_(self):
+    def __init__(self):
         self.x = getWorld().playerX
         self.y = 750
 
