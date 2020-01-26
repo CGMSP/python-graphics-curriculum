@@ -81,7 +81,7 @@ class Bullet:
 
 ```
 
-### Moving the bullets
+### Moving the bullets     
 We now define a function where we move the bullet up by 8 pixels (by subtracting 8 pixels from the bullet's y axis)
 
 ```
@@ -89,7 +89,7 @@ def update(self):
     self.y -= 8
 ```
 
-### Drawing the bullets
+### Drawing the bullets     
 Here we define the function 'draw' with the parameter 'self' where we again use the function 'drawImage' with the image 'bulletImage' (defined later as [assets/bullet.png](assets/bullet.png)) in the position where we know the bullet is.
 
 ```
@@ -99,3 +99,115 @@ def draw(self):
 
 ```
 
+
+
+## Create enemies    
+Here, we define a function called createEnemy with the parameter 'world' where we append 'Enemy' to the list world.enemies. We also set the variable 'world.lastSpawnedEnemy' to the elapsed time.
+
+```
+
+def createEnemy(world):
+    world.enemies.append(Enemy())
+    world.lastSpawnedEnemy = getElapsedTime()
+
+
+```
+
+
+## Shooting Bullets    
+
+Here we make a function that simply appends 'Bullet' to a list called 'world.bullets'. 
+
+```
+
+def shootBullet(world):
+    world.bullets.append(Bullet())
+
+```
+
+## Starting the world    
+Here, we define a bunch of variables mentioned earlier, such as the images for the enemies and bullets, and the lists of enemies and bullets that get appended to.
+
+
+```
+
+def startWorld(world):
+    # Set background
+    setBackground((69, 69, 69))
+    # Declare variables
+    world.playerX = 500
+    world.enemies = []
+    world.bullets = []
+    world.enemySpeed = 1
+    world.enemySpawnRate = 2000
+    world.lastSpawnedEnemy = 0
+    # Load images
+    world.playerImage = loadImage('assets/player.png', scale=0.2)
+    world.enemyImage = loadImage('assets/enemy.png', scale=0.1)
+    world.bulletImage = loadImage('assets/bullet.png', scale=0.1)
+    # Create listener for space key
+    onKeyPress(shootBullet, 'space')
+
+
+
+```
+
+## Updating the world
+Here, we define the function that updates the world. We first update the enemies and the bullets. We use the 'update' function in the 'bullet' class to update the bullets.     
+
+
+```
+def updateWorld(world):
+    # Update enemies
+    for enemy in world.enemies:
+        if enemy.update(world):
+            world.enemies.remove(enemy)
+    # Update bullets
+    for bullet in world.bullets:
+        bullet.update()
+    # Spawn new enemies
+    if getElapsedTime() - world.lastSpawnedEnemy >= world.enemySpawnRate:
+        createEnemy(world)
+        world.enemySpeed += 0.05
+        world.enemySpawnRate *= 0.95
+    # Move player
+    if isKeyPressed('d') and world.playerX <= 960:
+        world.playerX += 8
+    if isKeyPressed('a') and world.playerX >= 40:
+        world.playerX -= 8
+
+
+```
+
+
+Now, we check if the d of a key is pressed to move the player. This is fairly simple. D is to go right, and therefor, we add 8 to the player's x axis to make the player move 8 pixels to the right. This is the same with left, except it's the a key and subtracting 8 from player's x rather than adding it.
+
+## Drawing the world
+Here we define the function to draw the world. We draw the line near the bottom of the screen, indicating how far the enemies can go before they kill you. Then, for every enemy that exists, we draw the enemies. We then draw the player by drawing the player's image (assets/player.png) in the right position.
+
+```
+
+def drawWorld(world):
+    drawLine(0, 700, 1000, 700, thickness=5)
+    # Draw bullets
+    for bullet in world.bullets:
+        bullet.draw()
+    # Draw enemies
+    for enemy in world.enemies:
+        enemy.draw()
+    # Draw player
+    # fillCircle(world.playerX, 750, 40, "black")
+    drawImage(world.playerImage, world.playerX, 750)
+
+
+``` 
+
+
+## Starting the game
+In the 'graphics' library, there is a function called 'runGraphics'. To run our functions with the 'graphics' library, we need to use them as parameters with the 'runGrapgics' library.
+
+```
+runGraphics(startWorld, updateWorld, drawWorld)
+
+
+```
