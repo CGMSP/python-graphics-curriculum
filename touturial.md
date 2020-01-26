@@ -1,4 +1,5 @@
-# Explanation of [python game](game.py)    
+# Explanation of [python game](game.py) 
+By Kaz Malhotra   
 This is the explanation/toutorial/curriculum for [game.py](game.py)    
 Let's start at the beginning.     
 
@@ -17,6 +18,39 @@ makeGraphicsWindow(1000, 800)
 setWindowTitle('Demo Game')
 
 ```
+
+## Starting the world    
+Here, we define a bunch of variables mentioned later, such as the images for the enemies and bullets, and the lists of enemies and bullets that get appended to.
+
+
+```
+
+def startWorld(world):
+    # Set background
+    setBackground((69, 69, 69))
+    # Declare variables
+    world.playerX = 500
+    world.enemies = []
+    world.bullets = []
+    world.enemySpeed = 1
+    world.enemySpawnRate = 2000
+    world.lastSpawnedEnemy = 0
+    # Load images
+    world.playerImage = loadImage('assets/player.png', scale=0.2)
+    world.enemyImage = loadImage('assets/enemy.png', scale=0.1)
+    world.bulletImage = loadImage('assets/bullet.png', scale=0.1)
+    # Create listener for space key
+    onKeyPress(shootBullet, 'space')
+
+
+
+```
+
+
+We also define the background to a dark grey, (an rgb of 69, 69, 69). We define the variable 'playerX' (used as the player's x axis) to 500 (the middle of the window as the window's width is 1,000 pixels). 
+We define empty lists of enemies and bullets. These will be appended to later.
+We set the enemy speed to 1, and increase it gradually in the updateWorld function. We set the enemy spawn rate to 2,000, which also increases in the updateWorld function. The reason we add to these variables is to make it more difficult for the player. 
+We define the variables for the images for the player, bullet, and enemies. 
 
 ## Enemies   
 Here we create a class called "Enemy" where we first define the function "\_\_init\_\_" with the parameter "self". We tell the enemy to spawn at the top of the screen, (0 on the y axis), and randomly horizontally (0 to 1,000 on the x axis).    
@@ -68,7 +102,7 @@ def draw(self):
     drawImage(getWorld().enemyImage, self.x, self.y)
 
 ```
-We use the function 'drawImage' to draw the enemy with the image 'enemyImage' (which gets defined later in the program as [assets/enemy.png](assets/enemy.png)), in the position of the enemy.
+We use the function 'drawImage' to draw the enemy with the image 'enemyImage' (defined earlier in the program as [assets/enemy.png](assets/enemy.png)), in the position of the enemy.
 
 ## Bullets
 We now create a class called 'bullet' and define a function initializing the bullet (called \_\_init\_\_ with the parameter of self) where we set the x axis to there the player is, and the y to 750, this will later be updated as we make the bullet move.
@@ -90,7 +124,7 @@ def update(self):
 ```
 
 ### Drawing the bullets     
-Here we define the function 'draw' with the parameter 'self' where we again use the function 'drawImage' with the image 'bulletImage' (defined later as [assets/bullet.png](assets/bullet.png)) in the position where we know the bullet is.
+Here we define the function 'draw' with the parameter 'self' where we again use the function 'drawImage' with the image 'bulletImage' (defined earlier as [assets/bullet.png](assets/bullet.png)) in the position where we know the bullet is.
 
 ```
 def draw(self):
@@ -125,32 +159,6 @@ def shootBullet(world):
 
 ```
 
-## Starting the world    
-Here, we define a bunch of variables mentioned earlier, such as the images for the enemies and bullets, and the lists of enemies and bullets that get appended to.
-
-
-```
-
-def startWorld(world):
-    # Set background
-    setBackground((69, 69, 69))
-    # Declare variables
-    world.playerX = 500
-    world.enemies = []
-    world.bullets = []
-    world.enemySpeed = 1
-    world.enemySpawnRate = 2000
-    world.lastSpawnedEnemy = 0
-    # Load images
-    world.playerImage = loadImage('assets/player.png', scale=0.2)
-    world.enemyImage = loadImage('assets/enemy.png', scale=0.1)
-    world.bulletImage = loadImage('assets/bullet.png', scale=0.1)
-    # Create listener for space key
-    onKeyPress(shootBullet, 'space')
-
-
-
-```
 
 ## Updating the world
 Here, we define the function that updates the world. We first update the enemies and the bullets. We use the 'update' function in the 'bullet' class to update the bullets.     
@@ -204,7 +212,7 @@ def drawWorld(world):
 
 
 ## Starting the game
-In the 'graphics' library, there is a function called 'runGraphics'. To run our functions with the 'graphics' library, we need to use them as parameters with the 'runGrapgics' library.
+In the 'graphics' library, there is a function called 'runGraphics'. To run our functions with the 'graphics' library, we need to use them as parameters with the 'runGraphics' library.
 
 ```
 runGraphics(startWorld, updateWorld, drawWorld)
