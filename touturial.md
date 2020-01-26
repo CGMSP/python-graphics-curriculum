@@ -19,12 +19,12 @@ setWindowTitle('Demo Game')
 ```
 
 ## Enemies   
-Here we create a class called "Enemy" where we first define the function "__init__" with the parameter "self". We tell the enemy to spawn at the top of the screen, (0 on the y axis), and randomly horizontally (0 to 1,000 on the x axis).    
+Here we create a class called "Enemy" where we first define the function "\_\_init\_\_" with the parameter "self". We tell the enemy to spawn at the top of the screen, (0 on the y axis), and randomly horizontally (0 to 1,000 on the x axis).    
 
 
 ```
 class Enemy:
-    def __init__(self):
+    def \_\_init\_\_(self):
         self.x = random.randint(0, 1000)
         self.y = 0
 
@@ -71,11 +71,11 @@ def draw(self):
 We use the function 'drawImage' to draw the enemy with the image 'enemyImage' (which gets defined later in the program as [assets/enemy.png](assets/enemy.png)), in the position of the enemy.
 
 ## Bullets
-We now create a class called 'bullet' and define a function initializing the bullet (called __init__ with the parameter of self) where we set the x axis to there the player is, and the y to 750, this will later be updated as we make the bullet move.
+We now create a class called 'bullet' and define a function initializing the bullet (called \_\_init\_\_ with the parameter of self) where we set the x axis to there the player is, and the y to 750, this will later be updated as we make the bullet move.
 
 ```
 class Bullet:
-    def __init__(self):
+    def \_\_init\_\_(self):
         self.x = getWorld().playerX
         self.y = 750
 
@@ -98,3 +98,4 @@ def draw(self):
     drawImage(getWorld().bulletImage, self.x, self.y)
 
 ```
+
