@@ -1,6 +1,6 @@
 # Explanation of [python game](game.py) 
 By Kaz Malhotra   
-This is the explanation/toutorial/curriculum for [game.py](game.py)    
+This is the explanation/tutorial/curriculum for [game.py](game.py)    
 Let's start at the beginning.     
 
 ## Importing modules   
