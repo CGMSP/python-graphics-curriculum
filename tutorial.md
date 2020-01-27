@@ -14,7 +14,9 @@ Just as you can import a module like pygame or numpy installed with pip, you can
 Here we are using the "graphics" library, in which the makeGraphicsWindow() function is defined.  setWindowTitle is used to the title of the window, the text at the top of the window. We create a window that is 800 pixels vertically, and 1,000 pixels horizontally. The default is 'pygame window', but we want a different title. Here, we use the example 'demo game', but you can change it to whatever you want.      
 
 ```
-makeGraphicsWindow(1000, 800)
+windowX = 1000
+windowY = 800
+makeGraphicsWindow(windowX, windowY)
 setWindowTitle('Demo Game')
 
 ```
@@ -31,7 +33,7 @@ We define the variables for the images for the player, bullet, and enemies with 
 ```
 class Enemy:
     def __init__(self):
-        self.x = random.randint(0, 1000)
+        self.x = random.randint(0, windowX)
         self.y = 0
 
 ```
