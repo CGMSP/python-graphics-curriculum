@@ -72,6 +72,7 @@ def createEnemy(world):
 def shootBullet(world):
     world.bullets.append(Bullet())
 
+
 def updateWorld(world):
     # Update enemies
     for enemy in world.enemies:
