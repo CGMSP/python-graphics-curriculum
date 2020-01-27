@@ -1,7 +1,10 @@
 from graphics import *
 import random, math, sys
 
-makeGraphicsWindow(1000, 800)
+windowX = 1000 # int(sys.argv[1])
+windowY = 800  # int(sys.argv[2])
+
+makeGraphicsWindow(windowX, windowY)
 setWindowTitle('Demo Game')
 
 
@@ -25,7 +28,7 @@ def startWorld(world):
 
 class Enemy:
     def __init__(self):
-        self.x = random.randint(0, 1000)
+        self.x = random.randint(0, windowX)
         self.y = 0
 
     def update(self, world):
@@ -92,7 +95,7 @@ def updateWorld(world):
         world.playerX -= 8
 
 def drawWorld(world):
-    drawLine(0, 700, 1000, 700, thickness=5)
+    drawLine(0, 700, windowX, 700, thickness=5)
     # Draw bullets
     for bullet in world.bullets:
         bullet.draw()
