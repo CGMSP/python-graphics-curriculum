@@ -4,25 +4,6 @@ import random, math, sys
 makeGraphicsWindow(1000, 800)
 setWindowTitle('Demo Game')
 
-
-def startWorld(world):
-    # Set background
-    setBackground((70, 70, 70))
-    # Declare variables
-    world.playerX = 500
-    world.enemies = []
-    world.bullets = []
-    world.enemySpeed = 1
-    world.enemySpawnRate = 2000
-    world.lastSpawnedEnemy = 0
-    # Load images
-    world.playerImage = loadImage('assets/player.png', scale=0.2)
-    world.enemyImage = loadImage('assets/enemy.png', scale=0.1)
-    world.bulletImage = loadImage('assets/bullet.png', scale=0.1)
-    # Create listener for space key
-    onKeyPress(shootBullet, 'space')
-
-
 class Enemy:
     def __init__(self):
         self.x = random.randint(0, 1000)
@@ -70,7 +51,22 @@ def createEnemy(world):
 def shootBullet(world):
     world.bullets.append(Bullet())
 
-
+def startWorld(world):
+    # Set background
+    setBackground((70, 70, 70))
+    # Declare variables
+    world.playerX = 500
+    world.enemies = []
+    world.bullets = []
+    world.enemySpeed = 1
+    world.enemySpawnRate = 2000
+    world.lastSpawnedEnemy = 0
+    # Load images
+    world.playerImage = loadImage('assets/player.png', scale=0.2)
+    world.enemyImage = loadImage('assets/enemy.png', scale=0.1)
+    world.bulletImage = loadImage('assets/bullet.png', scale=0.1)
+    # Create listener for space key
+    onKeyPress(shootBullet, 'space')
 
 def updateWorld(world):
     # Update enemies
