@@ -9,7 +9,7 @@ setWindowTitle('Demo Game')
 
 class Enemy:
     def __init__(self):
-        self.x = random.randint(0, windowX)
+        self.x = random.randint(40, windowX - 40)
         self.y = 0
 
     def update(self, world):
@@ -87,7 +87,7 @@ def updateWorld(world):
         world.enemySpeed += 0.05
         world.enemySpawnRate *= 0.95
     # Move player
-    if isKeyPressed('d') and world.playerX <= 960:
+    if isKeyPressed('d') and world.playerX <= windowX - 40:
         world.playerX += 8
     if isKeyPressed('a') and world.playerX >= 40:
         world.playerX -= 8
