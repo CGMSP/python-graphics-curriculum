@@ -100,6 +100,7 @@ def startWorld(world):
     setBackground((70, 70, 70))
     # Declare variables
     world.playerX = 500
+    world.score = 0
     world.enemies = []
     world.bullets = []
     world.enemySpeed = 1
@@ -170,6 +171,7 @@ def updateWorld(world):
     for enemy in world.enemies:
         if enemy.update(world):
             world.enemies.remove(enemy)
+            world.score += 1
     # Update bullets
     for bullet in world.bullets:
         bullet.update()
@@ -191,7 +193,7 @@ def updateWorld(world):
 Now, we check if the d of a key is pressed to move the player. This is fairly simple. D is to go right, and therefor, we add 8 to the player's x axis to make the player move 8 pixels to the right. This is the same with left, except it's the a key and subtracting 8 from player's x rather than adding it.
 
 ## Drawing the world
-Here we define the function to draw the world. We draw the line near the bottom of the screen, indicating how far the enemies can go before they kill you. Then, for every enemy that exists, we draw the enemies. We then draw the player by drawing the player's image (assets/player.png) in the right position.
+Here we define the function to draw the world. We draw the line near the bottom of the screen, indicating how far the enemies can go before they kill you. Then, for every enemy that exists, we draw the enemies. We then draw the player by drawing the player's image (assets/player.png) in the right position. We also display the score here.
 
 ```
 
@@ -206,6 +208,7 @@ def drawWorld(world):
     # Draw player
     # fillCircle(world.playerX, 750, 40, "black")
     drawImage(world.playerImage, world.playerX, 750)
+    drawString(world.score, 10, 10, size=100)
 
 
 ``` 
