@@ -219,6 +219,4 @@ In the 'graphics' library, there is a function called 'runGraphics'. To run our 
 
 ```
 runGraphics(startWorld, updateWorld, drawWorld)
-
-
 ```
