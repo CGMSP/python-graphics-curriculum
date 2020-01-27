@@ -19,34 +19,6 @@ setWindowTitle('Demo Game')
 
 ```
 
-
-
-## Starting the world    
-Here, we define a bunch of variables mentioned later, such as the images for the enemies and bullets, and the lists of enemies and bullets that get appended to. We won't actually call this function until later, but we define our variables here.
-
-
-```
-
-def startWorld(world):
-    # Set background
-    setBackground((70, 70, 70))
-    # Declare variables
-    world.playerX = 500
-    world.enemies = []
-    world.bullets = []
-    world.enemySpeed = 1
-    world.enemySpawnRate = 2000
-    world.lastSpawnedEnemy = 0
-    # Load images
-    world.playerImage = loadImage('assets/player.png', scale=0.9)
-    world.enemyImage = loadImage('assets/enemy.png', scale=0.1)
-    world.bulletImage = loadImage('assets/bullet.png', scale=0.03)
-    # Create listener for space key
-    onKeyPress(shootBullet, 'space')
-
-```
-
-
 ## Enemies   
 Here we create a class called "Enemy" where we first define the function "\_\_init\_\_" with the parameter "self". We tell the enemy to spawn at the top of the screen, (0 on the y axis), and randomly horizontally (0 to 1,000 on the x axis).    
 We also define the background to a dark grey, (an rgb of 70, 70, 70). We define the variable 'playerX' (used as the player's x axis) to 500 (the middle of the window as the window's width is 1,000 pixels). 
@@ -112,6 +84,31 @@ class Bullet:
     def __init__(self):
         self.x = getWorld().playerX
         self.y = 750
+
+```
+
+## Starting the world    
+Here, we define a bunch of variables mentioned later, such as the images for the enemies and bullets, and the lists of enemies and bullets that get appended to. We won't actually call this function until later, but we define our variables here.
+
+
+```
+
+def startWorld(world):
+    # Set background
+    setBackground((70, 70, 70))
+    # Declare variables
+    world.playerX = 500
+    world.enemies = []
+    world.bullets = []
+    world.enemySpeed = 1
+    world.enemySpawnRate = 2000
+    world.lastSpawnedEnemy = 0
+    # Load images
+    world.playerImage = loadImage('assets/player.png', scale=0.9)
+    world.enemyImage = loadImage('assets/enemy.png', scale=0.1)
+    world.bulletImage = loadImage('assets/bullet.png', scale=0.03)
+    # Create listener for space key
+    onKeyPress(shootBullet, 'space')
 
 ```
 

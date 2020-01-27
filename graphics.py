@@ -558,7 +558,7 @@ def gameControllerGetStickAxesNames(device=0):
     if device < _GLI.numJoysticks:
         labelDict = _GLI.joystickLabels[device]
         axes = labelDict.keys()
-        axes.sort(key=lambda axis: labelDict[axis])
+        # axes.sort(key=lambda axis: labelDict[axis])
         return axes
     return []
 
