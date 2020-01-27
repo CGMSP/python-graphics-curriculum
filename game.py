@@ -7,7 +7,7 @@ setWindowTitle('Demo Game')
 
 def startWorld(world):
     # Set background
-    setBackground((69, 69, 69))
+    setBackground((70, 70, 70))
     # Declare variables
     world.playerX = 500
     world.enemies = []
