@@ -8,7 +8,7 @@ Let's start at the beginning.
 from graphics import *
 import random, math, sys
 ```
-Just as you can import a module like pygame or numpy installed with pip, you can also import a python file in the same directory as the program you are writing. Here, you will import random, math, sys, and [graphics.py](graphics.py)        
+Just as you can import a module like pygame or numpy installed with pip, you can also import a python file in the same directory as the program you are writing. Here, you will import `random`, `math`, `sys`, and [graphics.py](graphics.py)        
 
 ## Creating a window   
 Here we are using the "graphics" library, in which the makeGraphicsWindow() function is defined.  setWindowTitle is used to the title of the window, the text at the top of the window. We create a window that is 800 pixels vertically, and 1,000 pixels horizontally. The default is 'pygame window', but we want a different title. Here, we use the example 'demo game', but you can change it to whatever you want.      
