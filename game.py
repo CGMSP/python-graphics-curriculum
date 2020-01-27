@@ -59,7 +59,7 @@ def startWorld(world):
     world.enemySpawnRate = 2000
     world.lastSpawnedEnemy = 0
     # Load images
-    world.playerImage = loadImage('assets/player.png', scale=0.9)
+    world.playerImage = loadImage('assets/player.png', scale=0.8)
     world.enemyImage = loadImage('assets/enemy.png', scale=0.1)
     world.bulletImage = loadImage('assets/bullet.png', scale=0.03)
     # Create listener for space key
