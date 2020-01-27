@@ -52,6 +52,7 @@ def startWorld(world):
     setBackground((70, 70, 70))
     # Declare variables
     world.playerX = 500
+    world.score = 0
     world.enemies = []
     world.bullets = []
     world.enemySpeed = 1
@@ -76,6 +77,7 @@ def updateWorld(world):
     for enemy in world.enemies:
         if enemy.update(world):
             world.enemies.remove(enemy)
+            world.score += 1
     # Update bullets
     for bullet in world.bullets:
         bullet.update()
@@ -101,6 +103,7 @@ def drawWorld(world):
     # Draw player
     # fillCircle(world.playerX, 750, 40, "black")
     drawImage(world.playerImage, world.playerX, 750)
+    drawString(world.score, 10, 10, size=100)
 
 # Start the game
 runGraphics(startWorld, updateWorld, drawWorld)
