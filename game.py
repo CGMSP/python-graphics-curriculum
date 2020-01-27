@@ -80,7 +80,7 @@ def updateWorld(world):
     # Update bullets
     for bullet in world.bullets:
         bullet.update()
-    # Spawn new enemies
+    # Spawn new enemies and increase speed + spawn rate
     if getElapsedTime() - world.lastSpawnedEnemy >= world.enemySpawnRate:
         createEnemy(world)
         world.enemySpeed += 0.05
