@@ -1,15 +1,20 @@
 from graphics import *
 import random, math, sys
 
+<<<<<<< HEAD
 windowX = int(sys.argv[1])
 windowY = int(sys.argv[2])
+=======
+windowX = 1000 # int(sys.argv[1])
+windowY = 800 # int(sys.argv[1])
+>>>>>>> b5f0311d66aa4423fb32b64d1b716e00def34996
 
 makeGraphicsWindow(windowX, windowY)
 setWindowTitle('Demo Game')
 
 class Enemy:
     def __init__(self):
-        self.x = random.randint(0, windowX)
+        self.x = random.randint(40, windowX - 40)
         self.y = 0
 
     def update(self, world):
@@ -52,7 +57,10 @@ def startWorld(world):
     setBackground((70, 70, 70))
     # Declare variables
     world.playerX = windowX / 2
+<<<<<<< HEAD
     world.playerY = windowY - 60
+=======
+>>>>>>> b5f0311d66aa4423fb32b64d1b716e00def34996
     world.score = 0
     world.enemies = []
     world.bullets = []
@@ -78,7 +86,7 @@ def updateWorld(world):
     for enemy in world.enemies:
         if enemy.update(world):
             world.enemies.remove(enemy)
-            world.score += 1
+            world.score += 100
     # Update bullets
     for bullet in world.bullets:
         bullet.update()
@@ -88,10 +96,11 @@ def updateWorld(world):
         world.enemySpeed += 0.05
         world.enemySpawnRate *= 0.95
     # Move player
-    if isKeyPressed('d') and world.playerX <= 960:
+    if isKeyPressed('d') and world.playerX <= windowX - 40:
         world.playerX += 8
     if isKeyPressed('a') and world.playerX >= 40:
         world.playerX -= 8
+
 
 def drawWorld(world):
     lineY = windowY - 100
@@ -104,8 +113,14 @@ def drawWorld(world):
         enemy.draw()
     # Draw player
     # fillCircle(world.playerX, 750, 40, "black")
+<<<<<<< HEAD
     drawImage(world.playerImage, world.playerX, world.playerY)
     drawString(world.score, 10, 10, size=100)
+=======
+    drawImage(world.playerImage, world.playerX, 750)
+    drawString("Score:", 10, 10, size=100)
+    drawString(world.score, 300, 10, size=100)
+>>>>>>> b5f0311d66aa4423fb32b64d1b716e00def34996
 
 # Start the game
 runGraphics(startWorld, updateWorld, drawWorld)
