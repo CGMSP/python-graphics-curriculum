@@ -2,8 +2,8 @@ from graphics import *
 import random, math, sys
 
 
-windowX = int(sys.argv[1])
-windowY = int(sys.argv[2])
+windowX = 1000 # int(sys.argv[1])
+windowY = 800 # int(sys.argv[2])
 =======
 windowX = 1000 # int(sys.argv[1])
 windowY = 800 # int(sys.argv[1])
