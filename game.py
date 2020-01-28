@@ -17,7 +17,7 @@ class Enemy:
         # Move enemy down
         self.y += world.enemySpeed
         # Check if enemy hit the bottom of the screen
-        if self.y >= windowY + 30:
+        if self.y >= windowY - 130:
             print('You died!')
             sys.exit()
         # Figure out if enemy gets shot
@@ -53,7 +53,7 @@ def startWorld(world):
     setBackground((70, 70, 70))
     # Declare variables
     world.playerX = windowX / 2
-    world.playerY = windowY - 60
+    world.playerY = windowY - 65
     world.score = 0
     world.enemies = []
     world.bullets = []
