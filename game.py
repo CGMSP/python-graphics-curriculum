@@ -1,8 +1,8 @@
 from graphics import *
 import random, math, sys
 
-windowX = 1000# int(sys.argv[1])
-windowY = 800# int(sys.argv[1])
+windowX = 1000 # int(sys.argv[1])
+windowY = 800 # int(sys.argv[1])
 
 makeGraphicsWindow(windowX, windowY)
 setWindowTitle('Demo Game')
@@ -51,7 +51,7 @@ def startWorld(world):
     # Set background
     setBackground((70, 70, 70))
     # Declare variables
-    world.playerX = 500
+    world.playerX = windowX / 2
     world.score = 0
     world.enemies = []
     world.bullets = []
@@ -77,7 +77,7 @@ def updateWorld(world):
     for enemy in world.enemies:
         if enemy.update(world):
             world.enemies.remove(enemy)
-            world.score += 1
+            world.score += 100
     # Update bullets
     for bullet in world.bullets:
         bullet.update()
@@ -104,7 +104,8 @@ def drawWorld(world):
     # Draw player
     # fillCircle(world.playerX, 750, 40, "black")
     drawImage(world.playerImage, world.playerX, 750)
-    drawString(world.score, 10, 10, size=100)
+    drawString("Score:", 10, 10, size=100)
+    drawString(world.score, 300, 10, size=100)
 
 # Start the game
 runGraphics(startWorld, updateWorld, drawWorld)

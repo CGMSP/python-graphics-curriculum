@@ -94,12 +94,11 @@ Here, we define a bunch of variables mentioned later, such as the images for the
 
 
 ```
-
 def startWorld(world):
     # Set background
     setBackground((70, 70, 70))
     # Declare variables
-    world.playerX = 500
+    world.playerX = windowX / 2
     world.score = 0
     world.enemies = []
     world.bullets = []
@@ -107,7 +106,7 @@ def startWorld(world):
     world.enemySpawnRate = 2000
     world.lastSpawnedEnemy = 0
     # Load images
-    world.playerImage = loadImage('assets/player.png', scale=0.9)
+    world.playerImage = loadImage('assets/player.png', scale=0.8)
     world.enemyImage = loadImage('assets/enemy.png', scale=0.1)
     world.bulletImage = loadImage('assets/bullet.png', scale=0.03)
     # Create listener for space key
@@ -116,7 +115,7 @@ def startWorld(world):
 ```
 
 ### Moving the bullets     
-We now define a function where we move the bullet up by 8 pixels (by subtracting 8 pixels from the bullet's y axis)
+We now define a function where we move the bullet up by 8 pixels (by subtracting 8 pixels from the bullet's y axis). We also define playerX (the player's position on the x axis) to windowW (the length of the window on the x axis) devided by 2 (the middle)
 
 ```
 def update(self):
