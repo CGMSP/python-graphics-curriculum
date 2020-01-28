@@ -4,8 +4,6 @@ import random, math, sys
 
 windowX = 1000 # int(sys.argv[1])
 windowY = 800 # int(sys.argv[2])
-windowX = 1000 # int(sys.argv[1])
-windowY = 800 # int(sys.argv[1])
 
 makeGraphicsWindow(windowX, windowY)
 setWindowTitle('Demo Game')
