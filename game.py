@@ -4,7 +4,6 @@ import random, math, sys
 
 windowX = 1000 # int(sys.argv[1])
 windowY = 800 # int(sys.argv[2])
-=======
 windowX = 1000 # int(sys.argv[1])
 windowY = 800 # int(sys.argv[1])
 
@@ -110,7 +109,6 @@ def drawWorld(world):
     # Draw player
     # fillCircle(world.playerX, 750, 40, "black")
     drawImage(world.playerImage, world.playerX, world.playerY)
-    drawString(world.score, 10, 10, size=100)
     drawImage(world.playerImage, world.playerX, 750)
     drawString("Score:", 10, 10, size=100)
     drawString(world.score, 300, 10, size=100)
