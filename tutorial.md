@@ -1,4 +1,4 @@
-# Explanation of [python game](game.py) 
+# Explanation of [python game](game.py)
 By Kaz Malhotra   
 This is the explanation/tutorial/curriculum for [game.py](game.py)    
 Let's start at the beginning.     
@@ -23,10 +23,10 @@ setWindowTitle('Demo Game')
 
 ## Enemies   
 Here we create a class called "Enemy" where we first define the function "\_\_init\_\_" with the parameter "self". We tell the enemy to spawn at the top of the screen, (0 on the y axis), and randomly horizontally (0 to 1,000 on the x axis).    
-We also define the background to a dark grey, (an rgb of 70, 70, 70). We define the variable 'playerX' (used as the player's x axis) to 500 (the middle of the window as the window's width is 1,000 pixels). 
+We also define the background to a dark grey, (an rgb of 70, 70, 70). We define the variable 'playerX' (used as the player's x axis) to 500 (the middle of the window as the window's width is 1,000 pixels).
 We define empty lists of enemies and bullets. These will be appended to later.
-We set the enemy speed to 1, and increase it gradually in the updateWorld function. We set the enemy spawn rate to 2,000, which also increases in the updateWorld function. The reason we add to these variables is to make it more difficult for the player. 
-We define the variables for the images for the player, bullet, and enemies with their appropriate scale. 
+We set the enemy speed to 1, and increase it gradually in the updateWorld function. We set the enemy spawn rate to 2,000, which also increases in the updateWorld function. The reason we add to these variables is to make it more difficult for the player.
+We define the variables for the images for the player, bullet, and enemies with their appropriate scale.
 
 
 
@@ -150,7 +150,7 @@ def createEnemy(world):
 
 ## Shooting Bullets    
 
-Here we make a function that simply appends 'Bullet' to a list called 'world.bullets'. 
+Here we make a function that simply appends 'Bullet' to a list called 'world.bullets'.
 
 ```
 
@@ -181,7 +181,7 @@ def updateWorld(world):
         world.enemySpeed += 0.05
         world.enemySpawnRate *= 0.95
     # Move player
-    if isKeyPressed('d') and world.playerX <= 960:
+    if isKeyPressed('d') and world.playerX <= windowX - 40:
         world.playerX += 8
     if isKeyPressed('a') and world.playerX >= 40:
         world.playerX -= 8
@@ -191,6 +191,7 @@ def updateWorld(world):
 
 
 Now, we check if the d of a key is pressed to move the player. This is fairly simple. D is to go right, and therefor, we add 8 to the player's x axis to make the player move 8 pixels to the right. This is the same with left, except it's the a key and subtracting 8 from player's x rather than adding it.
+We check if the player is at the side of the screen by making sure the player only moves if it is within 40 pixels into the screen and the length of the x axis of the screen (windowX) minus 40.
 
 ## Drawing the world
 Here we define the function to draw the world. We draw the line near the bottom of the screen, indicating how far the enemies can go before they kill you. Then, for every enemy that exists, we draw the enemies. We then draw the player by drawing the player's image (assets/player.png) in the right position. We also display the score here.
@@ -211,7 +212,7 @@ def drawWorld(world):
     drawString(world.score, 10, 10, size=100)
 
 
-``` 
+```
 
 
 ## Starting the game

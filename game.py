@@ -1,8 +1,8 @@
 from graphics import *
 import random, math, sys
 
-windowX = 1000
-windowY = 800
+windowX = int(sys.argv[1])
+windowY = int(sys.argv[1])
 
 makeGraphicsWindow(windowX, windowY)
 setWindowTitle('Demo Game')
@@ -91,6 +91,7 @@ def updateWorld(world):
         world.playerX += 8
     if isKeyPressed('a') and world.playerX >= 40:
         world.playerX -= 8
+
 
 def drawWorld(world):
     drawLine(0, 700, windowX, 700, thickness=5)
