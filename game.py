@@ -1,13 +1,12 @@
 from graphics import *
 import random, math, sys
 
-<<<<<<< HEAD
+
 windowX = int(sys.argv[1])
 windowY = int(sys.argv[2])
 =======
 windowX = 1000 # int(sys.argv[1])
 windowY = 800 # int(sys.argv[1])
->>>>>>> b5f0311d66aa4423fb32b64d1b716e00def34996
 
 makeGraphicsWindow(windowX, windowY)
 setWindowTitle('Demo Game')
@@ -57,10 +56,7 @@ def startWorld(world):
     setBackground((70, 70, 70))
     # Declare variables
     world.playerX = windowX / 2
-<<<<<<< HEAD
     world.playerY = windowY - 60
-=======
->>>>>>> b5f0311d66aa4423fb32b64d1b716e00def34996
     world.score = 0
     world.enemies = []
     world.bullets = []
@@ -113,14 +109,11 @@ def drawWorld(world):
         enemy.draw()
     # Draw player
     # fillCircle(world.playerX, 750, 40, "black")
-<<<<<<< HEAD
     drawImage(world.playerImage, world.playerX, world.playerY)
     drawString(world.score, 10, 10, size=100)
-=======
     drawImage(world.playerImage, world.playerX, 750)
     drawString("Score:", 10, 10, size=100)
     drawString(world.score, 300, 10, size=100)
->>>>>>> b5f0311d66aa4423fb32b64d1b716e00def34996
 
 # Start the game
 runGraphics(startWorld, updateWorld, drawWorld)
