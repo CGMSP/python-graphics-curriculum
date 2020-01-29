@@ -107,8 +107,7 @@ def drawWorld(world):
     # Draw player
     # fillCircle(world.playerX, 750, 40, "black")
     drawImage(world.playerImage, world.playerX, world.playerY)
-    drawString("Score:", 10, 10, size=100)
-    drawString(world.score, 300, 10, size=100)
+    drawString("Score: " + str(world.score), 10, 10, size=50)
 
 # Start the game
 runGraphics(startWorld, updateWorld, drawWorld)
