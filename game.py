@@ -39,7 +39,7 @@ class Enemy:
 class Bullet:
     def __init__(self):
         self.x = getWorld().playerX
-        self.y = 750
+        self.y = windowY - 50
 
     def update(self):
         self.y -= 8
@@ -107,7 +107,6 @@ def drawWorld(world):
     # Draw player
     # fillCircle(world.playerX, 750, 40, "black")
     drawImage(world.playerImage, world.playerX, world.playerY)
-    drawImage(world.playerImage, world.playerX, 750)
     drawString("Score:", 10, 10, size=100)
     drawString(world.score, 300, 10, size=100)
 
