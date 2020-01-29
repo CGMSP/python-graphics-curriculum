@@ -33,7 +33,6 @@ class Enemy:
         return False
 
     def draw(self):
-        # fillCircle(self.x, self.y, 30, "crimson")
         drawImage(getWorld().enemyImage, self.x, self.y)
 
 class Bullet:
@@ -45,7 +44,6 @@ class Bullet:
         self.y -= 8
 
     def draw(self):
-        # fillCircle(self.x, self.y, 10, "black")
         drawImage(getWorld().bulletImage, self.x, self.y)
 
 def startWorld(world):
@@ -105,7 +103,6 @@ def drawWorld(world):
     for enemy in world.enemies:
         enemy.draw()
     # Draw player
-    # fillCircle(world.playerX, 750, 40, "black")
     drawImage(world.playerImage, world.playerX, world.playerY)
     drawString("Score: " + str(world.score), 10, 10, size=50)
 
