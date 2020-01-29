@@ -53,7 +53,7 @@ def startWorld(world):
     setBackground((70, 70, 70))
     # Declare variables
     world.playerX = windowX / 2
-    world.playerY = windowY - 65
+    world.playerY = windowY - 50
     world.score = 0
     world.enemies = []
     world.bullets = []
