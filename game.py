@@ -18,7 +18,7 @@ class Enemy:
         self.y += world.enemySpeed
         # Check if enemy hit the bottom of the screen
         if self.y >= windowY - 130:
-            print('You died!')
+            print(f'You died! Your score was {world.score}')
             sys.exit()
         # Figure out if enemy gets shot
         for bullet in world.bullets:
